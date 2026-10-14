@@ -61,7 +61,6 @@ function App() {
       <div className="hero-label">UNIVERSAL CONVERTER — ONLINE FILE TOOLS</div>
       <h1>轉換檔案。<br/>不必<span className="accent">複雜。</span></h1>
       <p className="lead">圖片轉換、PDF 處理，一個地方就夠。<br/>無需註冊，檔案直接在瀏覽器完成處理。</p>
-      <div className="hero-actions"><a className="primary-link" href="/img">開始轉換 <ArrowRight size={19}/></a><a className="secondary-link" href="/pdf">探索 PDF 工具 ↗</a></div>
       <div className="home-tools"><div className="home-tools-title">SELECT A TOOL <span>01 — 02</span></div><div className="tool-grid"><a className="tool tool-image" href="/img"><span className="tool-number">01 / IMAGE</span><strong>圖片轉換 <ArrowRight size={24}/></strong><small>JPG / PNG / WEBP</small></a><a className="tool tool-pdf" href="/pdf"><span className="tool-number">02 / DOCUMENT</span><strong>PDF 工具 <ArrowRight size={24}/></strong><small>合併 / 擷取 / 旋轉 / 圖片互轉</small></a></div></div>
     </main> : path === '/img' ? <ImagePage/> : <main><h1>找不到頁面。</h1><p className="lead"><a href="/">返回首頁 →</a></p></main>}
     <footer><span>© 2026 UNIVERSAL CONVERTER</span><span>NO UPLOADS. NO ACCOUNT. JUST CONVERT.</span></footer>
