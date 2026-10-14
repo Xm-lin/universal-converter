@@ -714,3 +714,14 @@ footer {
 .site.theme-image .message {
   color: #80adff;
 }
+
+/* Homepage: each tool keeps its own accent color. */
+.home-tools .tool-image { --tool-accent: #003c9d; }
+.home-tools .tool-pdf { --tool-accent: #ed5037; }
+.home-tools .tool .tool-number { color: var(--tool-accent); }
+.home-tools .tool:hover,
+.home-tools .tool.active {
+  border-color: var(--tool-accent);
+  background: #1c1a1d;
+}
+.home-tools .tool:hover strong svg { color: var(--tool-accent); }
