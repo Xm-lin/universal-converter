@@ -52,7 +52,7 @@ function ImagePage() {
 }
 function App() {
   const path = window.location.pathname;
-  return <div className="site">
+  return <div className={`site ${path === "/img" ? "theme-image" : ""}`}>
     <header className="site-header">
       <a className="brand" href="/">UNIVERSAL<span>CONVERTER</span></a>
       <nav aria-label="主要導覽"><a className={path === '/' ? 'current' : ''} href="/">首頁</a><a className={path === '/img' ? 'current' : ''} href="/img">圖片轉換</a><a className={path === '/pdf' ? 'current' : ''} href="/pdf">PDF 工具</a></nav>
