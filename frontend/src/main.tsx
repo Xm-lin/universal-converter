@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ArrowRight, CheckCircle2, Download, FileImage, ImagePlus, ShieldCheck, X } from 'lucide-react';
 import { convertImage, download, formats, supported, type Format } from './converter';
+import PdfPage from './PdfPage';
 import './style.css';
 
-function App() {
+function ImagePage() {
   const [files, setFiles] = useState<File[]>([]);
   const [target, setTarget] = useState<Format>('png');
   const [busy, setBusy] = useState(false);
@@ -30,9 +31,7 @@ function App() {
     setResults(completed); setBusy(false);
     setMessage(failures ? `${failures} 個檔案轉換失敗，請確認圖片沒有損壞。` : '轉換完成！');
   }
-  return <div className="site">
-    <header><div className="brand"><div className="brand-icon"><ArrowRight size={20}/></div>Universal<span>Converter</span></div><div className="header-tag">IMAGE TOOLS <span>·</span> 01</div></header>
-    <main>
+  return <main>
       <div className="eyebrow"><span className="pulse"/> 免費 · 無需註冊 · 本機處理</div>
       <h1>圖片格式轉換，<br/><em>就這麼簡單。</em></h1>
       <p className="lead">JPG、PNG、WEBP 自由轉換。無需上傳伺服器，<br className="desktop"/>你的圖片只會留在自己的裝置上。</p>
@@ -49,7 +48,14 @@ function App() {
         {results.length>0 && <div className="results"><div className="section-heading"><b>轉換結果 <span>{results.length}</span></b></div>{results.map((r,i)=><div className="result-row" key={i}><span><CheckCircle2 size={17}/>{r.name}</span><button onClick={()=>download(r.blob,r.name)}><Download size={16}/> 下載</button></div>)}</div>}
       </section>
       <div className="benefits"><div><ShieldCheck size={20}/><span><strong>隱私優先</strong><small>檔案不會離開你的裝置</small></span></div><div><ArrowRight size={20}/><span><strong>快速轉換</strong><small>直接在瀏覽器完成</small></span></div><div><FileImage size={20}/><span><strong>批次處理</strong><small>一次轉換多張圖片</small></span></div></div>
-    </main><footer><span>© 2026 Universal Converter</span><span>BUILT FOR SIMPLICITY.</span></footer>
+    </main>;
+}
+function App() {
+  const path = window.location.pathname;
+  return <div className="site">
+    <header><a className="brand" href="/"><div className="brand-icon"><ArrowRight size={20}/></div>Universal<span>Converter</span></a><nav><a href="/">首頁</a><a href="/img">圖片工具</a><a href="/pdf">PDF 工具</a></nav></header>
+    {path === '/pdf' ? <PdfPage/> : path === '/' ? <main className="landing"><div className="eyebrow"><span className="pulse"/> 免費 · 瀏覽器本機處理</div><h1>所有轉換工具，<br/><em>一個網站搞定。</em></h1><p className="lead">選擇你要使用的工具</p><div className="tool-grid"><a className="tool" href="/img"><strong>圖片轉換</strong><small>JPG、PNG、WEBP</small></a><a className="tool" href="/pdf"><strong>PDF 工具</strong><small>合併、擷取、旋轉、圖片互轉</small></a></div></main> : path === '/img' ? <ImagePage/> : <main><h1>找不到頁面</h1><p className="lead"><a href="/">返回首頁</a></p></main>}
+    <footer><span>© 2026 Universal Converter</span><span>BUILT FOR SIMPLICITY.</span></footer>
   </div>;
 }
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
