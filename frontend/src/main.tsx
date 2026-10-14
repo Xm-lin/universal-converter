@@ -53,9 +53,19 @@ function ImagePage() {
 function App() {
   const path = window.location.pathname;
   return <div className="site">
-    <header><a className="brand" href="/"><div className="brand-icon"><ArrowRight size={20}/></div>Universal<span>Converter</span></a><nav><a href="/">首頁</a><a href="/img">圖片工具</a><a href="/pdf">PDF 工具</a></nav></header>
-    {path === '/pdf' ? <PdfPage/> : path === '/' ? <main className="landing"><div className="eyebrow"><span className="pulse"/> 免費 · 瀏覽器本機處理</div><h1>所有轉換工具，<br/><em>一個網站搞定。</em></h1><p className="lead">選擇你要使用的工具</p><div className="tool-grid"><a className="tool" href="/img"><strong>圖片轉換</strong><small>JPG、PNG、WEBP</small></a><a className="tool" href="/pdf"><strong>PDF 工具</strong><small>合併、擷取、旋轉、圖片互轉</small></a></div></main> : path === '/img' ? <ImagePage/> : <main><h1>找不到頁面</h1><p className="lead"><a href="/">返回首頁</a></p></main>}
-    <footer><span>© 2026 Universal Converter</span><span>BUILT FOR SIMPLICITY.</span></footer>
+    <header className="site-header">
+      <a className="brand" href="/">UNIVERSAL<span>CONVERTER</span></a>
+      <nav aria-label="主要導覽"><a className={path === '/' ? 'current' : ''} href="/">首頁</a><a className={path === '/img' ? 'current' : ''} href="/img">圖片轉換</a><a className={path === '/pdf' ? 'current' : ''} href="/pdf">PDF 工具</a></nav>
+      <a className="header-action" href={path === '/pdf' ? '/img' : '/pdf'}>{path === '/pdf' ? '圖片工具' : 'PDF 工具'} <ArrowRight size={16}/></a>
+    </header>
+    {path === '/pdf' ? <PdfPage/> : path === '/' ? <main className="landing">
+      <div className="hero-label">UNIVERSAL CONVERTER — ONLINE FILE TOOLS</div>
+      <h1>轉換檔案。<br/>不必<span className="accent">複雜。</span></h1>
+      <p className="lead">圖片轉換、PDF 處理，一個地方就夠。<br/>無需註冊，檔案直接在瀏覽器完成處理。</p>
+      <div className="hero-actions"><a className="primary-link" href="/img">開始轉換 <ArrowRight size={19}/></a><a className="secondary-link" href="/pdf">探索 PDF 工具 ↗</a></div>
+      <div className="home-tools"><div className="home-tools-title">SELECT A TOOL <span>01 — 02</span></div><div className="tool-grid"><a className="tool" href="/img"><span className="tool-number">01 / IMAGE</span><strong>圖片轉換 <ArrowRight size={24}/></strong><small>JPG / PNG / WEBP</small></a><a className="tool" href="/pdf"><span className="tool-number">02 / DOCUMENT</span><strong>PDF 工具 <ArrowRight size={24}/></strong><small>合併 / 擷取 / 旋轉 / 圖片互轉</small></a></div></div>
+    </main> : path === '/img' ? <ImagePage/> : <main><h1>找不到頁面。</h1><p className="lead"><a href="/">返回首頁 →</a></p></main>}
+    <footer><span>© 2026 UNIVERSAL CONVERTER</span><span>NO UPLOADS. NO ACCOUNT. JUST CONVERT.</span></footer>
   </div>;
 }
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
