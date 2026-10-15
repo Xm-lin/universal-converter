@@ -30,7 +30,10 @@ for path, parts in anchors.items():
 for path in ['backend/audio.py', 'frontend/src/AudioPage.tsx', 'Dockerfile', 'docker-compose.yaml', 'README.md']:
     dest = root / path
     dest.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(package / path, dest)
+    src = package / path
+
+    if src.resolve() != dest.resolve():
+        shutil.copyfile(src, dest)
 
 change('backend/main.py', 'from fastapi.staticfiles import StaticFiles', 'from fastapi.staticfiles import StaticFiles\nfrom .audio import router as audio_router')
 change('backend/main.py', 'app = FastAPI(title="Universal Converter")', 'app = FastAPI(title="Universal Converter")\napp.include_router(audio_router)')

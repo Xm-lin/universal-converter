@@ -725,3 +725,21 @@ footer {
   background: #1c1a1d;
 }
 .home-tools .tool:hover strong svg { color: var(--tool-accent); }
+
+/* Audio page: dark surfaces with violet accents. */
+.site.theme-audio h1 em,
+.site.theme-audio .eyebrow,
+.site.theme-audio .mini-icon,
+.site.theme-audio .section-heading b span { color:#a78bfa; }
+.site.theme-audio .pulse,
+.site.theme-audio .status span { background:#7c3aed; }
+.site.theme-audio .browse,
+.site.theme-audio .convert,
+.site.theme-audio .result-row button,
+.site.theme-audio .formats button.active { background:#7c3aed; border-color:#7c3aed; color:#fff; }
+.site.theme-audio .browse:hover,
+.site.theme-audio .convert:hover:not(:disabled) { background:#8b5cf6; }
+.site.theme-audio .dropzone:hover { border-color:#7c3aed; }
+.site.theme-audio .upload-icon { color:#a78bfa; border-color:#5b3b93; }
+.site.theme-audio .message { color:#c4b5fd; }
+.home-tools .tool-audio { --tool-accent:#a78bfa; }

@@ -2,8 +2,10 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from .audio import router as audio_router
 
 app = FastAPI(title="Universal Converter")
+app.include_router(audio_router)
 dist = Path(__file__).resolve().parent.parent / "frontend" / "dist"
 
 @app.get('/api/health')
