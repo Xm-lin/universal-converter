@@ -743,3 +743,9 @@ footer {
 .site.theme-audio .upload-icon { color:#a78bfa; border-color:#5b3b93; }
 .site.theme-audio .message { color:#c4b5fd; }
 .home-tools .tool-audio { --tool-accent:#a78bfa; }
+
+
+/* 僅調整 PDF 頁面 */
+.pdf-tools .tool strong {
+  font-size: 16px;
+}
