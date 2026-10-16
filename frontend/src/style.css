@@ -745,7 +745,6 @@ footer {
 .home-tools .tool-audio { --tool-accent:#a78bfa; }
 
 
-/* 僅調整 PDF 頁面 */
 .pdf-tools .tool strong {
-  font-size: 16px;
+  font-size: 8px;
 }
